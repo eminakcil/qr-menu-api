@@ -33,6 +33,7 @@ app.use(cors())
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')))
 
 app.listen(PORT, () => {
+  console.log('\n'.repeat(process.stdout.rows - 2 - 2))
   console.log(`App listening on port ${PORT}`)
   app.use('/api', ApiRoutes)
   app.use(errorHandler)
