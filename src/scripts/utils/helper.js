@@ -9,7 +9,7 @@ export const passwordToHash = (password) =>
 
 export const generateAccessToken = (email) => {
   return JWT.sign({ name: email }, process.env.ACCESS_TOKEN_SECRET_KEY, {
-    expiresIn: '1h',
+    expiresIn: '1m',
   })
 }
 
