@@ -7,7 +7,7 @@ import { createValidation } from '../validations/Category'
 const router = Router()
 const controller = new CategoriesController()
 
-router.route('/').get(authenticateToken, controller.list)
+router.route('/').get(controller.list)
 router.route('/').post(authenticateToken, validate(createValidation), controller.insert)
 
 export default router
