@@ -5,4 +5,8 @@ export default class CategoriesService extends BaseService {
   constructor() {
     super(Category)
   }
+
+  get(where = {}) {
+    return this.model.findOne(where).populate('products')
+  }
 }
