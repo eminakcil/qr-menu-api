@@ -4,7 +4,7 @@ import RefreshToken from '../models/RefreshToken'
 import ApiError from '../errors/ApiError'
 import { generateAccessToken } from '../scripts/utils/helper'
 
-export default class UserService extends BaseService {
+export default class UsersService extends BaseService {
   constructor() {
     super(User)
   }
