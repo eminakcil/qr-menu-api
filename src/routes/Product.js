@@ -8,6 +8,7 @@ const router = Router()
 const controller = new ProductsController()
 
 router.route('/').get(controller.list)
+router.route('/:id').get(controller.getById)
 router.route('/').post(authenticateToken, validate(createValidation), controller.insert)
 
 export default router

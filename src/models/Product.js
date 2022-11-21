@@ -19,7 +19,8 @@ const schema = new Schema(
 )
 
 schema.post('save', async (doc, next) => {
-  await Category.findOneAndUpdate({ _id: doc.category }, { $push: { products: doc._id } })
+  await Category.findOneAndUpdate({ _id: doc.category }, { $addToSet: { products: doc._id } })
+
   next()
 })
 
