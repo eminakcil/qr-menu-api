@@ -18,4 +18,8 @@ export default class BaseService {
   get(where = {}) {
     return this.model.findOne(where)
   }
+
+  async edit(id, data) {
+    return this.model.findByIdAndUpdate(id, data, { new: true })
+  }
 }

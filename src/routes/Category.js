@@ -2,7 +2,12 @@ import { Router } from 'express'
 import CategoriesController from '../controllers/CategoriesController'
 import { authenticateToken } from '../middlewares/authenticate'
 import validate from '../middlewares/validate'
-import { createValidationBody, createValidationFile } from '../validations/Category'
+import {
+  createValidationBody,
+  createValidationFile,
+  editValidationBody,
+  editValidationFile,
+} from '../validations/Category'
 
 const router = Router()
 const controller = new CategoriesController()
@@ -16,6 +21,15 @@ router
     validate(createValidationBody),
     validate(createValidationFile, 'files'),
     controller.insert
+  )
+
+router
+  .route('/:id/edit')
+  .patch(
+    authenticateToken,
+    validate(editValidationBody),
+    validate(editValidationFile, 'files'),
+    controller.edit
   )
 
 export default router
