@@ -9,14 +9,6 @@ export default class UsersController extends BaseController {
     super(new UsersService())
   }
 
-  insert = (req, res, next) => {
-    const body = { ...req.body, password: passwordToHash(req.body.password) }
-    this.service
-      .insert(body)
-      .then((response) => res.status(201).send(response))
-      .catch(next)
-  }
-
   login = (req, res, next) => {
     this.service
       .get({ email: req.body.email })

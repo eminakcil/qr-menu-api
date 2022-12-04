@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose'
+import { passwordToHash } from '../scripts/utils/helper'
 
 const schema = new Schema(
   {
@@ -11,5 +12,12 @@ const schema = new Schema(
     timestamps: true,
   }
 )
+
+schema.pre('save', function (next) {
+  if (this.isModified('password')) {
+    this.password = passwordToHash(this.password)
+  }
+  next()
+})
 
 export default model('user', schema)
