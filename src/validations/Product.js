@@ -10,3 +10,14 @@ export const createValidationBody = Joi.object({
 export const createValidationFile = Joi.object({
   logo: Joi.any().required(),
 })
+
+export const editValidationBody = Joi.object({
+  title: Joi.string(),
+  price: Joi.number().min(0),
+  description: Joi.string(),
+  category: Joi.string(),
+}).allow(null)
+
+export const editValidationFile = Joi.object({
+  logo: Joi.any(),
+}).allow(null)
